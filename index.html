@@ -73,6 +73,871 @@ nav{box-shadow:0 2px 18px rgba(16,35,63,.04)}
 .profile-card h3{display:none}
 .skills-menu{padding:8px;display:grid;gap:9px}.skill-menu{border:1px solid var(--line);border-radius:14px;background:#fbfcfe;overflow:hidden}.skill-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 18px;font-weight:800;color:var(--navy)}.skill-menu summary::-webkit-details-marker{display:none}.skill-menu summary b{display:inline-flex;width:30px;height:26px;align-items:center;justify-content:center;margin-right:9px;border-radius:7px;background:#eaf2ff;color:var(--blue);font-size:10px}.skill-arrow{width:31px;height:31px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;color:var(--blue);transition:.2s}.skill-menu[open] .skill-arrow{transform:rotate(180deg);background:#eef5ff}.skill-menu-body{padding:0 18px 18px;border-top:1px solid #edf0f5;display:flex;flex-wrap:wrap;gap:8px}.skill-menu-body .pill{margin-top:12px}
 @media(max-width:720px){.availability-note{display:flex;align-items:flex-start}.skill-menu summary{padding:15px 14px;font-size:13px}.skill-menu-body{padding:0 14px 14px}.skill-menu summary b{width:27px;height:24px;margin-right:7px}}
+
+/* =========================================================
+   FINAL RESPONSIVE PATCH
+   Optimized for desktop, laptop, tablet and mobile
+   ========================================================= */
+
+/* Prevent horizontal overflow from long headings/links */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container,
+.hero-grid,
+.about,
+.case,
+.achievement,
+.grid,
+.education,
+.contact-grid,
+.skills-panel {
+  min-width: 0;
+}
+
+.hero-copy,
+.section-head,
+.card,
+.project,
+.job-summary-title,
+.contact-card {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+a,
+span {
+  overflow-wrap: anywhere;
+}
+
+/* Keep the hero title flexible instead of forcing a single line */
+.hero h1 .gradient {
+  white-space: normal;
+  max-width: 100%;
+}
+
+/* Better desktop/laptop proportions */
+.hero-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .72fr);
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.profile-card {
+  justify-self: end;
+  width: min(100%, 410px);
+}
+
+.profile-photo-wrap {
+  width: 100%;
+}
+
+/* Navigation */
+.nav {
+  min-width: 0;
+}
+
+.brand {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navlinks a {
+  white-space: nowrap;
+}
+
+/* Sections should never create horizontal scrolling */
+section {
+  overflow: hidden;
+}
+
+.section-head h2 {
+  overflow-wrap: normal;
+}
+
+/* Long contact details must fit small screens */
+.contact-card a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    width: min(100% - 40px, 1160px);
+  }
+
+  .hero {
+    padding: 64px 0 58px;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .62fr);
+    gap: 36px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 6.5vw, 62px);
+    letter-spacing: -2px;
+  }
+
+  .hero h1 .gradient {
+    font-size: clamp(21px, 3.2vw, 31px);
+  }
+
+  .navlinks {
+    gap: 16px;
+  }
+
+  .section-head {
+    gap: 20px;
+  }
+}
+
+/* Tablet / small laptop */
+@media (max-width: 900px) {
+  .hero-grid,
+  .about,
+  .case,
+  .achievement {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .profile-card {
+    justify-self: center;
+    width: min(100%, 430px);
+  }
+
+  .grid,
+  .education,
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .section-head p {
+    text-align: left;
+    margin-top: 7px;
+  }
+
+  .skills-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile navigation + layout */
+@media (max-width: 720px) {
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav {
+    min-height: 62px;
+    gap: 10px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+  }
+
+  .navlinks {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 62px;
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px;
+    background: rgba(255,255,255,.98);
+    border: 1px solid var(--line);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 16px 32px rgba(16,35,63,.12);
+  }
+
+  .navlinks.open {
+    display: flex;
+  }
+
+  .navlinks a {
+    padding: 12px 10px;
+    border-radius: 9px;
+  }
+
+  .hero {
+    padding: 44px 0 40px;
+  }
+
+  .hero-grid {
+    gap: 30px;
+  }
+
+  .eyebrow {
+    max-width: 100%;
+    font-size: 10.5px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 11vw, 54px);
+    line-height: 1.04;
+    letter-spacing: -1.6px;
+    margin: 17px 0 14px;
+  }
+
+  .hero h1 .gradient {
+    font-size: clamp(19px, 5.5vw, 25px);
+    line-height: 1.18;
+    letter-spacing: -.6px;
+  }
+
+  .hero p {
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  .actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-card {
+    width: min(100%, 380px);
+    margin: 0 auto;
+    padding: 13px;
+    border-radius: 20px;
+  }
+
+  .profile-photo-wrap {
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+  }
+
+  .photo-badge {
+    left: 14px;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+    font-size: 9.5px;
+  }
+
+  section {
+    padding: 52px 0;
+  }
+
+  .section-head {
+    margin-bottom: 24px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(27px, 8vw, 34px);
+    line-height: 1.15;
+  }
+
+  .card {
+    padding: 19px;
+  }
+
+  .about .card {
+    padding: 20px;
+  }
+
+  .grid,
+  .education,
+  .contact-grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .job-details summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 16px;
+  }
+
+  .job-body {
+    padding: 0 16px 17px;
+  }
+
+  .job-summary-title h3 {
+    font-size: 16px;
+  }
+
+  .date {
+    font-size: 10.5px;
+  }
+
+  .company {
+    font-size: 13px;
+  }
+
+  .case-main {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .case-main h3 {
+    font-size: 23px;
+    line-height: 1.25;
+  }
+
+  .logo-cloud {
+    gap: 9px;
+  }
+
+  .logo-box {
+    min-width: calc(50% - 5px);
+  }
+
+  .contact {
+    padding-bottom: 42px;
+  }
+
+  .contact-card {
+    padding: 18px;
+  }
+
+  footer {
+    padding: 22px 14px;
+  }
+
+  .back-top {
+    width: 42px;
+    height: 42px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .brand {
+    font-size: 15.5px;
+  }
+
+  .hero {
+    padding-top: 38px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    line-height: 1.35;
+    padding: 7px 10px;
+  }
+
+  h1 {
+    font-size: clamp(34px, 11.5vw, 48px);
+  }
+
+  .hero h1 .gradient {
+    font-size: clamp(18px, 5.7vw, 23px);
+  }
+
+  .profile-card {
+    padding: 10px;
+  }
+
+  .profile-photo-wrap {
+    aspect-ratio: 1 / 1.12;
+  }
+
+  .availability-note {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .skill-menu summary {
+    padding: 14px 12px;
+    font-size: 12.5px;
+  }
+
+  .skill-menu-body {
+    padding: 0 12px 12px;
+  }
+
+  .pill {
+    font-size: 12px;
+    padding: 7px 9px;
+  }
+
+  .job-details summary {
+    padding: 14px 13px;
+  }
+
+  .job-body {
+    padding: 0 13px 15px;
+  }
+
+  .case-main {
+    padding: 21px 17px;
+  }
+
+  .case-point {
+    padding: 15px;
+  }
+
+  .logo-box {
+    min-width: 100%;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 18px);
+  }
+
+  .brand {
+    font-size: 14.5px;
+  }
+
+  .menu-toggle {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .hero h1 .gradient {
+    font-size: 18px;
+  }
+
+  .profile-photo-wrap {
+    aspect-ratio: 1 / 1.08;
+  }
+
+  .job-summary-title h3 {
+    font-size: 15px;
+  }
+
+  .job-chevron {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   COMPACT RESPONSIVE LAYOUT
+   Tighter spacing while preserving the existing design
+   ========================================================= */
+
+/* Global compact sizing */
+.container {
+  width: min(1120px, calc(100% - 32px));
+}
+
+section {
+  padding: 54px 0;
+}
+
+.section-head {
+  margin-bottom: 22px;
+}
+
+.card {
+  padding: 21px;
+}
+
+/* Navigation */
+.nav {
+  min-height: 64px;
+}
+
+.navlinks {
+  gap: 18px;
+}
+
+/* Hero: reduce empty vertical space */
+.hero {
+  min-height: auto;
+  padding: 54px 0 46px;
+}
+
+.hero-grid {
+  gap: 34px;
+}
+
+h1 {
+  margin: 14px 0 13px;
+}
+
+.hero p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.actions {
+  margin-top: 20px;
+  gap: 9px;
+}
+
+.profile-card {
+  padding: 14px;
+}
+
+.profile-card hr {
+  margin: 12px 0 !important;
+}
+
+/* About */
+.about {
+  gap: 20px;
+}
+
+.stats {
+  gap: 10px;
+}
+
+.stat {
+  padding: 15px;
+}
+
+/* Skills */
+.skills-menu {
+  padding: 5px;
+}
+
+.skill-menu summary {
+  padding: 14px 16px;
+}
+
+.skill-menu-body {
+  padding: 0 16px 15px;
+}
+
+/* Experience */
+.accordion {
+  gap: 9px;
+}
+
+.job-details summary {
+  padding: 16px 18px;
+}
+
+.job-body {
+  padding: 0 18px 16px;
+}
+
+.job-body ul {
+  margin-top: 12px;
+}
+
+.job-body li + li {
+  margin-top: 5px;
+}
+
+/* Projects */
+.grid {
+  gap: 13px;
+}
+
+.project {
+  padding: 19px;
+}
+
+.case {
+  gap: 16px;
+}
+
+.case-main {
+  padding: 25px;
+}
+
+.case-side {
+  gap: 9px;
+}
+
+.case-point {
+  padding: 14px;
+}
+
+/* Education / recognition */
+.education,
+.achievement {
+  gap: 13px;
+}
+
+/* Contact */
+.contact-grid {
+  gap: 10px;
+}
+
+.contact-card {
+  padding: 16px;
+}
+
+/* Laptop / desktop */
+@media (min-width: 901px) {
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .hero-grid {
+    gap: 30px;
+  }
+
+  section {
+    padding: 48px 0;
+  }
+
+  .section-head {
+    margin-bottom: 20px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 30px, 900px);
+  }
+
+  .hero {
+    padding: 44px 0 38px;
+  }
+
+  section {
+    padding: 45px 0;
+  }
+
+  .hero-grid {
+    gap: 25px;
+  }
+
+  .profile-card {
+    max-width: 370px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .nav {
+    min-height: 58px;
+  }
+
+  .navlinks {
+    top: 58px;
+  }
+
+  .hero {
+    padding: 34px 0 32px;
+  }
+
+  .hero-grid {
+    gap: 22px;
+  }
+
+  h1 {
+    margin: 12px 0 11px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .actions {
+    margin-top: 17px;
+    gap: 7px;
+  }
+
+  section {
+    padding: 38px 0;
+  }
+
+  .section-head {
+    margin-bottom: 17px;
+  }
+
+  .section-head h2 {
+    font-size: 27px;
+  }
+
+  .card {
+    padding: 17px;
+  }
+
+  .about {
+    gap: 12px;
+  }
+
+  .stats {
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 14px;
+  }
+
+  .skills-menu {
+    padding: 4px;
+  }
+
+  .skill-menu summary {
+    padding: 13px 12px;
+  }
+
+  .skill-menu-body {
+    padding: 0 12px 12px;
+    gap: 6px;
+  }
+
+  .pill {
+    padding: 6px 8px;
+  }
+
+  .accordion {
+    gap: 8px;
+  }
+
+  .job-details summary {
+    padding: 14px 13px;
+  }
+
+  .job-body {
+    padding: 0 13px 14px;
+  }
+
+  .case-main {
+    padding: 21px 17px;
+  }
+
+  .case-side {
+    gap: 8px;
+  }
+
+  .case-point {
+    padding: 13px;
+  }
+
+  .education,
+  .achievement,
+  .contact-grid {
+    gap: 9px;
+  }
+
+  .contact-card {
+    padding: 14px;
+  }
+
+  footer {
+    padding: 18px 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 18px);
+  }
+
+  .hero {
+    padding: 30px 0 28px;
+  }
+
+  .hero-grid {
+    gap: 18px;
+  }
+
+  section {
+    padding: 32px 0;
+  }
+
+  .section-head {
+    margin-bottom: 14px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .profile-card {
+    padding: 9px;
+  }
+
+  .profile-card hr {
+    margin: 9px 0 !important;
+  }
+
+  .job-details summary {
+    padding: 12px;
+  }
+
+  .job-body {
+    padding: 0 12px 12px;
+  }
+
+  .case-main {
+    padding: 18px 14px;
+  }
+
+  .case-main h3 {
+    font-size: 21px;
+  }
+}
+
 </style>
 </head>
 <body>
